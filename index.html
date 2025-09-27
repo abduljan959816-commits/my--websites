@@ -1,1975 +1,1236 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لاتری آمریکا - محمد پارسا</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #1a56db;
-            --primary-dark: #1e40af;
-            --accent: #e11d48;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --gold: #f59e0b;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --discount: #8b5cf6;
-            --settings-bg: #ffffff;
-            --settings-text: #1e293b;
-            --settings-border: #e2e8f0;
-            --settings-hover: #f1f5f9;
-            --modal-bg: rgba(0, 0, 0, 0.5);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: var(--dark);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a56db' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            z-index: -1;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            position: relative;
-            transition: all 0.3s ease;
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 30px;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'%3E%3Ccircle cx='50' cy='50' r='2' fill='white' opacity='0.1'/%3E%3C/svg%3E");
-            background-size: 50px;
-            opacity: 0.3;
-        }
-        
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .logo {
-            width: 120px;
-            height: 120px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); }
-            50% { transform: scale(1.05); box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); }
-            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); }
-        }
-        
-        .logo-inner {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .logo-inner::before {
-            content: "";
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), transparent);
-            animation: shimmer 3s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%); }
-            100% { transform: translateX(100%) translateY(100%); }
-        }
-        
-        .logo-icon {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 5px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .logo-text {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .title {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            letter-spacing: -0.5px;
-        }
-        
-        .subtitle {
-            font-size: 1.4rem;
-            font-weight: 500;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-        
-        .badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--accent);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s infinite;
-            z-index: 2;
-        }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .countdown-section {
-            text-align: center;
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease-out 0.4s both;
-        }
-        
-        .countdown-title {
-            font-size: 1.6rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .countdown-title::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 3px;
-        }
-        
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .time-unit {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            border-radius: 15px;
-            padding: 25px 20px;
-            min-width: 100px;
-            box-shadow: 0 8px 20px rgba(26, 86, 219, 0.3);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            transform: translateY(0);
-        }
-        
-        .time-unit:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(26, 86, 219, 0.4);
-        }
-        
-        .time-unit::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
-        }
-        
-        .time-value {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 5px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            font-family: 'Arial', sans-serif;
-        }
-        
-        .time-label {
-            font-size: 1.1rem;
-            font-weight: 500;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-            animation: fadeIn 1s ease-out 0.6s both;
-        }
-        
-        .stat-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px 25px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-top: 5px solid var(--primary);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .stat-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .stat-card.success {
-            border-top-color: var(--success);
-        }
-        
-        .stat-card.warning {
-            border-top-color: var(--warning);
-        }
-        
-        .stat-card.danger {
-            border-top-color: var(--danger);
-        }
-        
-        .stat-value {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 10px;
-            line-height: 1;
-        }
-        
-        .success .stat-value {
-            color: var(--success);
-        }
-        
-        .warning .stat-value {
-            color: var(--warning);
-        }
-        
-        .danger .stat-value {
-            color: var(--danger);
-        }
-        
-        .stat-label {
-            font-size: 1.2rem;
-            color: var(--dark);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .stat-desc {
-            font-size: 0.95rem;
-            color: #64748b;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
-        
-        .consultant-section {
-            text-align: center;
-            margin: 50px 0;
-            position: relative;
-            animation: fadeIn 1s ease-out 0.8s both;
-        }
-        
-        .consultant-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-        }
-        
-        .consultant-title {
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-            margin-bottom: 30px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            background: white;
-            padding: 0 20px;
-            z-index: 2;
-        }
-        
-        .consultant-card {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-radius: 20px;
-            padding: 40px 30px;
-            display: inline-block;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 3px dashed var(--primary);
-            max-width: 550px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .consultant-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-        
-        .consultant-name {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            font-weight: 800;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .consultant-bio {
-            font-size: 1.2rem;
-            color: var(--dark);
-            margin-bottom: 25px;
-            line-height: 1.8;
-            font-weight: 500;
-        }
-        
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .stat {
-            background: white;
-            border-radius: 15px;
-            padding: 20px 15px;
-            min-width: 130px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .stat:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .stat-value-small {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 5px;
-            line-height: 1;
-        }
-        
-        .stat-label-small {
-            font-size: 1rem;
-            color: var(--dark);
-            font-weight: 500;
-        }
-        
-        .contact-section {
-            text-align: center;
-            margin: 50px 0 30px;
-            animation: fadeIn 1s ease-out 1s both;
-        }
-        
-        .contact-title {
-            font-size: 2rem;
-            color: var(--primary-dark);
-            margin-bottom: 30px;
-            font-weight: 800;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .contact-title::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 2px;
-        }
-        
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
-        .contact-button {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px 40px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            min-width: 250px;
-            text-align: center;
-            justify-content: center;
-        }
-        
-        .contact-button::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
-            z-index: 1;
-        }
-        
-        .contact-button span {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .contact-button i {
-            position: relative;
-            z-index: 2;
-            font-size: 2rem;
-        }
-        
-        .contact-button:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .contact-button:active {
-            transform: translateY(0);
-        }
-        
-        .telegram {
-            background: linear-gradient(135deg, #27A7E7 0%, #1C93D3 100%);
-            color: white;
-        }
-        
-        .whatsapp {
-            background: linear-gradient(135deg, #25D366 0%, #1EBE5D 100%);
-            color: white;
-        }
-        
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-            font-size: 1rem;
-            animation: fadeIn 1s ease-out 1.2s both;
-        }
-        
-        .footer-text {
-            opacity: 0.8;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-        
-        .copyright {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 500;
-        }
-        
-        .ribbon {
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            transform: rotate(45deg);
-            background: var(--accent);
-            color: white;
-            padding: 12px 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-            z-index: 3;
-            letter-spacing: 1px;
-        }
-        
-        .date-display {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            padding: 12px 20px;
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-        }
-        
-        .time-value {
-            transition: all 0.5s ease;
-        }
-        
-        .time-value.change {
-            animation: flip 0.5s ease;
-        }
-        
-        @keyframes flip {
-            0% { transform: rotateX(0deg); }
-            50% { transform: rotateX(90deg); }
-            100% { transform: rotateX(0deg); }
-        }
-        
-        .reset-button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
-        }
-        
-        .reset-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(225, 29, 72, 0.4);
-        }
-        
-        .discount-section {
-            background: linear-gradient(135deg, var(--discount) 0%, #7c3aed 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
-            position: relative;
-            overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            animation: fadeIn 1s ease-out 0.5s both;
-        }
-        
-        .discount-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'%3E%3Ccircle cx='50' cy='50' r='3' fill='white' opacity='0.1'/%3E%3C/svg%3E");
-            background-size: 40px;
-            opacity: 0.5;
-        }
-        
-        .discount-title {
-            font-size: 1.8rem;
-            color: white;
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .discount-code {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--discount);
-            font-size: 2.2rem;
-            font-weight: 900;
-            padding: 15px 30px;
-            border-radius: 15px;
-            margin: 20px 0;
-            display: inline-block;
-            letter-spacing: 3px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s infinite;
-            border: 2px dashed var(--discount);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .discount-code:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .discount-desc {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        
-        .copy-button {
-            background: white;
-            color: var(--discount);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .copy-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        .copied-message {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 15px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: inline-block;
-        }
-        
-        .copied-message.show {
-            opacity: 1;
-        }
-        
-        .hashtag-section {
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            text-align: center;
-            animation: fadeIn 1s ease-out 0.7s both;
-        }
-        
-        .hashtags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .hashtag {
-            background: rgba(37, 99, 235, 0.2);
-            color: var(--primary-dark);
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .hashtag:hover {
-            transform: scale(1.05);
-            background: rgba(37, 99, 235, 0.3);
-        }
-        
-        .settings-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 20px rgba(26, 86, 219, 0.4);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            font-size: 1.8rem;
-            animation: fadeIn 1.5s ease-out 1.5s both;
-        }
-        
-        .settings-button:hover {
-            transform: translateY(-5px) rotate(90deg);
-            box-shadow: 0 10px 25px rgba(26, 86, 219, 0.5);
-        }
-        
-        .settings-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--modal-bg);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-        }
-        
-        .settings-content {
-            background: var(--settings-bg);
-            width: 90%;
-            max-width: 500px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .settings-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-        
-        .close-settings {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .close-settings:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg);
-        }
-        
-        .settings-section {
-            padding: 25px;
-            border-bottom: 1px solid var(--settings-border);
-        }
-        
-        .settings-section:last-child {
-            border-bottom: none;
-        }
-        
-        .settings-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--settings-text);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            color: var(--dark);
-            background: rgba(37, 99, 235, 0.05);
-        }
-        
-        .social-link:hover {
-            transform: translateX(-5px);
-            background: rgba(37, 99, 235, 0.1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .social-link i {
-            font-size: 1.3rem;
-            width: 25px;
-            text-align: center;
-        }
-        
-        .telegram-link {
-            color: #27A7E7;
-        }
-        
-        .whatsapp-link {
-            color: #25D366;
-        }
-        
-        .instagram-link {
-            color: #e1306c;
-        }
-        
-        .facebook-link {
-            color: #1877f2;
-        }
-        
-        .tiktok-link {
-            color: #000000;
-        }
-        
-        .theme-options {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .theme-option {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-        
-        .theme-option:hover {
-            transform: scale(1.05);
-        }
-        
-        .theme-option.selected {
-            border-color: var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .theme-light {
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            color: #1e293b;
-        }
-        
-        .theme-dark {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e2e8f0;
-        }
-        
-        .wallpaper-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 15px;
-        }
-        
-        .wallpaper-option {
-            height: 80px;
-            border-radius: 10px;
-            cursor: pointer;
-            background-size: cover;
-            background-position: center;
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-            position: relative;
-        }
-        
-        .wallpaper-option:hover {
-            transform: scale(1.05);
-        }
-        
-        .wallpaper-option.selected {
-            border-color: var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .wallpaper-option.selected::after {
-            content: "✓";
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: var(--primary);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
-        .font-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .font-option {
-            padding: 10px 15px;
-            background: rgba(37, 99, 235, 0.05);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .font-option:hover {
-            background: rgba(37, 99, 235, 0.1);
-            transform: translateX(-5px);
-        }
-        
-        .font-option.selected {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .version-info {
-            text-align: center;
-            padding: 15px;
-            background: rgba(37, 99, 235, 0.05);
-            border-radius: 10px;
-            margin-top: 15px;
-            font-weight: 600;
-        }
-        
-        .info-section {
-            background: linear-gradient(135deg, rgba(26, 86, 219, 0.1) 0%, rgba(30, 64, 175, 0.05) 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-            border: 2px dashed rgba(26, 86, 219, 0.3);
-            animation: fadeIn 1s ease-out 0.9s both;
-        }
-        
-        .info-title {
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-align: center;
-            position: relative;
-        }
-        
-        .info-title::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-        
-        .info-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .info-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .info-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--primary);
-        }
-        
-        .info-card-title {
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .info-card-title i {
-            color: var(--primary);
-        }
-        
-        .info-list {
-            list-style: none;
-        }
-        
-        .info-list li {
-            margin-bottom: 10px;
-            padding-right: 25px;
-            position: relative;
-            line-height: 1.6;
-        }
-        
-        .info-list li::before {
-            content: "✓";
-            position: absolute;
-            right: 0;
-            color: var(--success);
-            font-weight: bold;
-        }
-        
-        .branch-info {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        
-        .branch-info::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--gold);
-        }
-        
-        .branch-title {
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .branch-title i {
-            color: var(--gold);
-        }
-        
-        .branch-address {
-            line-height: 1.8;
-            color: var(--dark);
-        }
-        
-        .highlight-text {
-            color: var(--primary-dark);
-            font-weight: 700;
-        }
-        
-        .cta-section {
-            text-align: center;
-            margin: 40px 0;
-            animation: fadeIn 1s ease-out 1.1s both;
-        }
-        
-        .cta-text {
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.6;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(26, 86, 219, 0.4);
-        }
-        
-        .info-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 15px;
-        }
-        
-        .info-link:hover {
-            color: var(--primary-dark);
-            gap: 8px;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                border-radius: 15px;
-            }
-            
-            .title {
-                font-size: 2.2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .content {
-                padding: 25px;
-            }
-            
-            .countdown {
-                gap: 10px;
-            }
-            
-            .time-unit {
-                min-width: 80px;
-                padding: 20px 15px;
-            }
-            
-            .time-value {
-                font-size: 2.5rem;
-            }
-            
-            .stats-section {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .consultant-name {
-                font-size: 2rem;
-            }
-            
-            .consultant-bio {
-                font-size: 1.1rem;
-            }
-            
-            .stats {
-                gap: 20px;
-            }
-            
-            .contact-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .contact-button {
-                min-width: auto;
-                padding: 18px 30px;
-                font-size: 1.2rem;
-            }
-            
-            .wallpaper-options {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .info-content {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Dark Theme */
-        body.dark-theme {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e2e8f0;
-        }
-        
-        body.dark-theme .container {
-            background: linear-gradient(to bottom, #1e1e2d 0%, #1a1a2e 100%);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-        
-        body.dark-theme :root {
-            --settings-bg: #1a1a2e;
-            --settings-text: #e2e8f0;
-            --settings-border: #334155;
-            --settings-hover: #334155;
-            --modal-bg: rgba(0, 0, 0, 0.8);
-        }
-        
-        body.dark-theme .stat-card,
-        body.dark-theme .consultant-card,
-        body.dark-theme .stat,
-        body.dark-theme .info-card,
-        body.dark-theme .branch-info {
-            background: #1e293b;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        body.dark-theme .discount-section {
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-        }
-        
-        body.dark-theme .footer {
-            background: #0f172a;
-        }
-        
-        /* Extra Large Font */
-        body.extra-large-font {
-            font-size: 1.2rem;
-        }
-        
-        body.extra-large-font .title {
-            font-size: 3.2rem;
-        }
-        
-        body.extra-large-font .subtitle {
-            font-size: 1.6rem;
-        }
-        
-        body.extra-large-font .countdown-title {
-            font-size: 1.8rem;
-        }
-        
-        body.extra-large-font .time-value {
-            font-size: 3.5rem;
-        }
-        
-        /* Thin Font */
-        body.thin-font {
-            font-weight: 300;
-        }
-        
-        body.thin-font .title,
-        body.thin-font .countdown-title,
-        body.thin-font .consultant-title,
-        body.thin-font .contact-title,
-        body.thin-font .stat-label,
-        body.thin-font .stat-label-small,
-        body.thin-font .info-title,
-        body.thin-font .info-card-title,
-        body.thin-font .branch-title {
-            font-weight: 600;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سیستم لیست قبولی لاتری آمریکا ۲۰۲۷ - عکاسی دیجیتالی پارسا</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #00ffd5;
+      --secondary-color: #00ff95;
+      --text-color: #fff;
+      --bg-color: linear-gradient(135deg, #0f0f0f, #1a1a2e, #0d7377);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-shadow: rgba(0, 255, 170, 0.4);
+      --header-bg: rgba(10, 15, 30, 0.8);
+      --font-size: 16px;
+    }
+
+    .light-theme {
+      --primary-color: #00876a;
+      --secondary-color: #009e6c;
+      --text-color: #333;
+      --bg-color: linear-gradient(135deg, #e6f7ff, #c1e3ff, #a0d6ff);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-shadow: rgba(0, 135, 90, 0.3);
+      --header-bg: rgba(255, 255, 255, 0.9);
+    }
+
+    .font-small {
+      --font-size: 14px;
+    }
+
+    .font-medium {
+      --font-size: 16px;
+    }
+
+    .font-large {
+      --font-size: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Vazirmatn", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 20px;
+      transition: all 0.3s ease;
+      min-height: 100vh;
+      font-size: var(--font-size);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    header {
+      background: var(--header-bg);
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      text-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .welcome-message {
+      background: rgba(0, 255, 170, 0.1);
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      border: 1px solid var(--primary-color);
+    }
+
+    .welcome-message h2 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .login-form {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: right;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--primary-color);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      font-family: "Vazirmatn", sans-serif;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      background: var(--primary-color);
+      color: #000;
+      font-family: "Vazirmatn", sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 170, 0.3);
+    }
+
+    .password-note {
+      margin-top: 15px;
+      padding: 10px;
+      background: rgba(255, 204, 0, 0.1);
+      border-radius: 10px;
+      border: 1px solid #ffcc00;
+      color: #ffcc00;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 45px 12px 15px;
+      border: none;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      font-family: "Vazirmatn", sans-serif;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-color);
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      background: rgba(0, 255, 170, 0.2);
+      color: var(--text-color);
+      font-family: "Vazirmatn", sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid var(--primary-color);
+    }
+
+    .filter-buttons button:hover, .filter-buttons button.active {
+      background: rgba(0, 255, 170, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .stat-box {
+      background: var(--card-bg);
+      padding: 15px;
+      border-radius: 15px;
+      min-width: 150px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-box h3 {
+      color: var(--primary-color);
+      margin-bottom: 5px;
+      font-size: 1.2rem;
+    }
+
+    .stat-box p {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .list-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .person {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card-bg);
+      padding: 16px 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px var(--card-shadow);
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .person:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 28px var(--card-shadow);
+    }
+
+    .name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+      text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      color: var(--secondary-color);
+    }
+
+    .status span {
+      background: rgba(0, 255, 149, 0.2);
+      padding: 5px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--secondary-color);
+      text-shadow: 0 0 10px var(--secondary-color);
+    }
+
+    .tick {
+      color: #00aaff;
+      font-size: 1.4rem;
+      text-shadow: 0 0 15px #00aaff, 0 0 25px #00aaff;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .pagination button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(0, 255, 170, 0.2);
+      color: var(--text-color);
+      font-family: "Vazirmatn", sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid var(--primary-color);
+    }
+
+    .pagination button:hover {
+      background: rgba(0, 255, 170, 0.4);
+    }
+
+    .pagination button.active {
+      background: var(--primary-color);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: var(--card-bg);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+
+    .settings-toggle {
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      background: var(--card-bg);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+      line-height: 1.8;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      padding: 15px;
+      border-radius: 15px;
+      min-width: 200px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .contact-card a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      display: block;
+      margin: 5px 0;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    .instructions {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      text-align: right;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .instructions h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .instructions ol {
+      text-align: right;
+      padding-right: 20px;
+      line-height: 2;
+    }
+
+    .instructions li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      background: rgba(0, 255, 170, 0.3);
+      padding: 2px 8px;
+      border-radius: 5px;
+      border: 1px solid var(--primary-color);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 30px rgba(0, 255, 170, 0.5);
+      border: 1px solid var(--primary-color);
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+      color: var(--primary-color);
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .settings-group {
+      margin-bottom: 20px;
+      text-align: right;
+    }
+
+    .settings-group h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .theme-options, .font-options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .theme-option, .font-option {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      font-family: "Vazirmatn", sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .theme-option.active, .font-option.active {
+      background: var(--primary-color);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      background: var(--primary-color);
+      color: #000;
+    }
+
+    .terms {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      text-align: right;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .terms h4 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .version-info {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .person {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      
+      .stats {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .stat-box {
+        width: 100%;
+        max-width: 250px;
+      }
+      
+      .controls {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .filter-buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+      }
+      
+      .theme-options, .font-options {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      .stat-box {
+        min-width: unset;
+        width: 100%;
+      }
+      
+      .contact-card {
+        width: 100%;
+      }
+      
+      .social-links {
+        gap: 10px;
+      }
+      
+      .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="ribbon">فرصت استثنایی</div>
-        <div class="header">
-            <div class="badge">فقط ۱۷ روز باقی مانده</div>
-            
-            <!-- Professional Logo -->
-            <div class="logo-container">
-                <div class="logo">
-                    <div class="logo-inner">
-                        <i class="fas fa-passport logo-icon"></i>
-                        <div class="logo-text">محمد پارسا</div>
-                    </div>
-                </div>
-            </div>
-            
-            <h1 class="title">لاتری گرین کارت آمریکا</h1>
-            <p class="subtitle">شانس خود را برای زندگی در آمریکا امتحان کنید</p>
-            <div class="date-display">امروز: ۲۷ سنبله ۱۴۰۴</div>
+  <div class="container">
+    <header>
+      <h1>✅ لیست قبولی لاتری آمریکا ۲۰۲۷</h1>
+      <p class="subtitle">سیستم پیگیری وضعیت متقاضیان لاتری آمریکا - عکاسی دیجیتالی پارسا</p>
+      
+      <div class="welcome-message">
+        <h2>به سیستم دیوی لاتری آمریکا 2027 خوش آمدین</h2>
+        <p>آخرین آپدیت 1404/06/25</p>
+        <p>این سیستم خاص به مشتریان عکاسی دیجیتالی پارسا میباشد</p>
+      </div>
+      
+      <div class="login-form" id="loginForm">
+        <div class="form-group">
+          <label for="username">نام کاربری</label>
+          <input type="text" id="username" placeholder="Mohammad Parsa">
+        </div>
+        <div class="form-group">
+          <label for="password">پسورد</label>
+          <input type="password" id="password" placeholder="پسورد را وارد کنید">
+        </div>
+        <button class="btn" id="loginBtn">ورود به سیستم</button>
+        
+        <div class="password-note">
+          <p>لطفا جهت وارد شدن در خانه اول Mohammad Parsa بنویسید</p>
+          <p>در خانه دوم پسورد parsa95 را وارد کنید</p>
+          <p>در صورت مشکل با آیدی زیر تماس بگیرید: @alomrparsa001</p>
+        </div>
+      </div>
+      
+      <div class="controls" id="mainContent" style="display: none;">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="جستجو بر اساس نام...">
         </div>
         
-        <div class="content">
-            <div class="countdown-section">
-                <h2 class="countdown-title">زمان باقیمانده تا شروع ثبت نام</h2>
-                <div class="countdown">
-                    <div class="time-unit">
-                        <div class="time-value" id="days">17</div>
-                        <div class="time-label">روز</div>
-                    </div>
-                    <div class="time-unit">
-                        <div class="time-value" id="hours">18</div>
-                        <div class="time-label">ساعت</div>
-                    </div>
-                    <div class="time-unit">
-                        <div class="time-value" id="minutes">34</div>
-                        <div class="time-label">دقیقه</div>
-                    </div>
-                    <div class="time-unit">
-                        <div class="time-value" id="seconds">50</div>
-                        <div class="time-label">ثانیه</div>
-                    </div>
-                </div>
-                <button class="reset-button" onclick="resetTimer()">بازنشانی زمان (۱۷ روز، ۱۸ ساعت، ۳۴ دقیقه و ۵۰ ثانیه)</button>
-            </div>
-            
-            <!-- Hashtag Section -->
-            <div class="hashtag-section">
-                <h3 style="color: var(--primary-dark); font-size: 1.5rem; font-weight: 700; margin-bottom: 15px;">محمد پارسا - یک نام معتبر که عوض نمیشه!</h3>
-                <div class="hashtags">
-                    <div class="hashtag">#ثبت_نام_لاتری_2027_U_اس_A</div>
-                    <div class="hashtag">#لیست_گیری_2027</div>
-                    <div class="hashtag">#محمد_پارسا</div>
-                    <div class="hashtag">#گرین_کارت_Usa</div>
-                    <div class="hashtag">#ما_بهترین_هستیم</div>
-                    <div class="hashtag">#ما_بیشترین_برنده_را_داشتیم</div>
-                </div>
-            </div>
-            
-            <!-- Discount Section -->
-            <div class="discount-section">
-                <h3 class="discount-title">🎉 کد تخفیف ویژه 🎉</h3>
-                <div class="discount-code" id="discountCode" onclick="copyDiscountCode()">PARSA20</div>
-                <p class="discount-desc">از این کد تخفیف منحصر به فرد برای دریافت خدمات مشاوره استفاده کنید و ۲۰٪ تخفیف ویژه دریافت نمایید!</p>
-                <button class="copy-button" onclick="copyDiscountCode()">
-                    <i class="fas fa-copy"></i>
-                    <span>کپی کد تخفیف</span>
-                </button>
-                <div class="copied-message" id="copiedMessage">کد با موفقیت کپی شد! ✅</div>
-            </div>
-            
-            <div class="stats-section">
-                <div class="stat-card success">
-                    <div class="stat-value">۳۲۱</div>
-                    <div class="stat-label">لیست گرفته شده ها</div>
-                    <div class="stat-desc">فامیلی و مجردی</div>
-                </div>
-                
-                <div class="stat-card warning">
-                    <div class="stat-value">۵۴</div>
-                    <div class="stat-label">زیر پروسس</div>
-                    <div class="stat-desc">تنظیم نمودن عکس و مشخصات</div>
-                </div>
-                
-                <div class="stat-card danger">
-                    <div class="stat-value">۲۱</div>
-                    <div class="stat-label">عکس ارسالی رد شده</div>
-                    <div class="stat-desc">معیار برای ثبت نام نبود</div>
-                </div>
-            </div>
-            
-            <div class="info-section">
-                <h3 class="info-title">اسناد لازم برای ثبت نام لاتری 2027</h3>
-                <div class="info-content">
-                    <div class="info-card">
-                        <h4 class="info-card-title">
-                            <i class="fas fa-user"></i>
-                            اسناد لازم برای انفرادی
-                        </h4>
-                        <ul class="info-list">
-                            <li>تذکره الکترونیکی</li>
-                            <li>ایمیل آدرس</li>
-                            <li>شماره مبایل</li>
-                            <li>اگر پاسپورت دارد خوب، ندارد لازم نیست</li>
-                            <li>آدرس فعلی</li>
-                            <li>آدرس جاده یا ناحیه مربوطه</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="info-card">
-                        <h4 class="info-card-title">
-                            <i class="fas fa-users"></i>
-                            اسناد لازم برای فامیلی
-                        </h4>
-                        <ul class="info-list">
-                            <li>تذکره الکترونیکی همه فامیل</li>
-                            <li>ایمیل آدرس متقاضی یا سرپرست فامیل</li>
-                            <li>شماره مبایل سر پرست فامیل</li>
-                            <li>سویه تحصیلی متقاضی</li>
-                            <li>اگر پاسپورت دارد خوب ندارد لازم نیست</li>
-                            <li>آدرس فعلی</li>
-                            <li>آدرس جاده یا ناحیه مربوطه</li>
-                            <li>نوت فرزندان تان باید پایین تر از 21</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="branch-info">
-                    <h4 class="branch-title">
-                        <i class="fas fa-map-marker-alt"></i>
-                        آدرس شعبه
-                    </h4>
-                    <p class="branch-address">
-                        عکاسی دیجیتالی پارسا جاده قومندانی امنیه روبروی لیسه جامی یا روبروی شعبه پاسپورت سابق با مدیریت <span class="highlight-text">محمد پارسا</span>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="consultant-section">
-                <h3 class="consultant-title">مشاور تخصصی لاتری آمریکا</h3>
-                <div class="consultant-card">
-                    <h4 class="consultant-name">محمد پارسا</h4>
-                    <p class="consultant-bio">۱۵ سال تجربه، دارای بیشترین پرونده موفق برنده لاتری، ۹۸٪ رضایت متقاضیان</p>
-                    
-                    <div class="stats">
-                        <div class="stat">
-                            <div class="stat-value-small">۱۵+</div>
-                            <div class="stat-label-small">سال تجربه</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value-small">۹۸٪</div>
-                            <div class="stat-label-small">رضایت متقاضیان</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="cta-section">
-                <p class="cta-text">
-                    خوشبختانه امسال ظرفیت برنده گان لاتری امریکا 2027 طبق پیش بینی های اولیه بلند تر از سالهای قبل می باشد
-                </p>
-                <div class="cta-buttons">
-                    <a href="https://t.me/Mohammadparsa001" class="cta-button">
-                        <i class="fab fa-telegram"></i>
-                        <span>ثبت نام در تلگرام</span>
-                    </a>
-                    <a href="https://api.whatsapp.com/send?phone=93791979726" class="cta-button">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>ثبت نام در واتساپ</span>
-                    </a>
-                </div>
-                <a href="https://t.me/Herat_online_001/13670" class="info-link">
-                    <span>معلومات صفر تا صد لاتری آمریکا</span>
-                    <i class="fas fa-arrow-left"></i>
-                </a>
-            </div>
-            
-            <div class="contact-section">
-                <h3 class="contact-title">همین حالا برای مشاوره رایگان اقدام کنید</h3>
-                <div class="contact-buttons">
-                    <a href="https://t.me/Mohammadparsa001" class="contact-button telegram">
-                        <i class="fab fa-telegram"></i>
-                        <span>@Mohammadparsa001</span>
-                    </a>
-                    <a href="https://wa.me/93791979726" class="contact-button whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>0791979726</span>
-                    </a>
-                </div>
-            </div>
+        <div class="filter-buttons">
+          <button data-filter="all" class="active">همه</button>
+          <button data-filter="individual">انفرادی</button>
+          <button data-filter="family">فامیلی</button>
         </div>
-        
-        <div class="footer">
-            <p class="footer-text">کلیه حقوق این وب‌سایت توسط محمد پارسا محفوظ است</p>
-            <p class="footer-text">دسترسی با اجازه محمد پارسا امکان پذیر است</p>
-            <div class="copyright">
-                © 2023 محمد پارسا - همه حقوق محفوظ است
-            </div>
+      </div>
+      
+      <div class="stats" id="statsSection" style="display: none;">
+        <div class="stat-box">
+          <h3>تعداد کل</h3>
+          <p id="totalCount">80</p>
         </div>
-
-        <!-- Settings Button -->
-        <div class="settings-button" id="settingsButton">
-            <i class="fas fa-cog"></i>
+        <div class="stat-box">
+          <h3>انفرادی</h3>
+          <p id="individualCount">73</p>
         </div>
-
-        <!-- Settings Modal -->
-        <div class="settings-modal" id="settingsModal">
-            <div class="settings-content">
-                <div class="settings-header">
-                    تنظیمات | Settings
-                    <div class="close-settings" id="closeSettings">
-                        <i class="fas fa-times"></i>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3 class="settings-title">شبکه های اجتماعی محمد پارسا</h3>
-                    <div class="social-links">
-                        <a href="https://t.me/Mohammadparsa001" class="social-link telegram-link">
-                            <i class="fab fa-telegram-plane"></i>
-                            <span>تلگرام | Telegram</span>
-                        </a>
-                        <a href="https://wa.me/93791979726" class="social-link whatsapp-link">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>واتساپ | WhatsApp</span>
-                        </a>
-                        <a href="https://instagram.com/haidari9165?igshid=YTQwZjQ0NmI0OA==" class="social-link instagram-link">
-                            <i class="fab fa-instagram"></i>
-                            <span>اینستاگرام | Instagram</span>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=100041860717559" class="social-link facebook-link">
-                            <i class="fab fa-facebook-f"></i>
-                            <span>فیسبوک | Facebook</span>
-                        </a>
-                        <a href="https://www.tiktok.com/@mohammad_parsa_001?_t=8ppKm2TEFJI&_r=1" class="social-link tiktok-link">
-                            <i class="fab fa-tiktok"></i>
-                            <span>تیک‌تاک | TikTok</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3 class="settings-title">والپیپر | Wallpaper</h3>
-                    <div class="wallpaper-options">
-                        <div class="wallpaper-option selected" data-wallpaper="default" style="background: linear-gradient(135deg, #f1f5f9, #e2e8f0);"></div>
-                        <div class="wallpaper-option" data-wallpaper="usa-flag" style="background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png'); background-size: cover;"></div>
-                        <div class="wallpaper-option" data-wallpaper="blue-gradient" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);"></div>
-                        <div class="wallpaper-option" data-wallpaper="purple-gradient" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);"></div>
-                        <div class="wallpaper-option" data-wallpaper="green-gradient" style="background: linear-gradient(135deg, #10b981, #059669);"></div>
-                        <div class="wallpaper-option" data-wallpaper="red-gradient" style="background: linear-gradient(135deg, #ef4444, #dc2626);"></div>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3 class="settings-title">تم رنگی | Theme</h3>
-                    <div class="theme-options">
-                        <div class="theme-option theme-light selected" data-theme="light">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <div class="theme-option theme-dark" data-theme="dark">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3 class="settings-title">اندازه فونت | Font Size</h3>
-                    <div class="font-options">
-                        <div class="font-option selected" data-font="normal">عادی | Normal</div>
-                        <div class="font-option" data-font="extra-large">بزرگ | Large</div>
-                        <div class="font-option" data-font="thin">باریک | Thin</div>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3 class="settings-title">ورژن | Version</h3>
-                    <div class="version-info">
-                        نسخه فعلی: 1.8.7.6 | Current Version: 1.8.7.6
-                    </div>
-                </div>
-            </div>
+        <div class="stat-box">
+          <h3>فامیلی</h3>
+          <p id="familyCount">7</p>
         </div>
+      </div>
+    </header>
+    
+    <div class="instructions" id="instructionsSection" style="display: none;">
+      <h2>✅ راهنمای استفاده از سیستم</h2>
+      <ol>
+        <li>این سیستم فقط به کسانی ساخته شده که خود را در عکاسی دیجیتالی پارسا به لاتری ثبت کرده اند.</li>
+        <li>برای بررسی وضعیت خود، نام و تخلص خود را در بخش جستجو وارد کنید.</li>
+        <li>اگر نام شما در لیست نمایش داده شود، به معنای قبولی در لاتری می‌باشد.</li>
+        <li>در صورت عدم وجود نام، می‌توانید با اطلاعات تماس زیر ارتباط برقرار کنید.</li>
+      </ol>
     </div>
+    
+    <div class="list-container" id="listContainer" style="display: none;">
+      <!-- افراد به صورت پویا نمایش داده می‌شوند -->
+    </div>
+    
+    <div class="pagination" id="pagination" style="display: none;">
+      <!-- صفحه‌بندی به صورت پویا ایجاد می‌شود -->
+    </div>
+    
+    <footer id="footerSection" style="display: none;">
+      <p>© ۲۰۲۷ - سیستم لیست‌گیری لاتری آمریکا. تمام حقوق محفوظ است.</p>
+      <p>تهیه و ترتیب توسط محمد پارسا ✔️</p>
+      
+      <div class="contact-info">
+        <div class="contact-card">
+          <h3>📱 تلگرام رسمی</h3>
+          <a href="https://t.me/Mohammadparsa001" target="_blank">@Mohammadparsa001</a>
+        </div>
+        
+        <div class="contact-card">
+          <h3>📞 واتساپ رسمی</h3>
+          <p>0791979726</p>
+          <p>0781951747</p>
+        </div>
+        
+        <div class="contact-card">
+          <h3>📌 آدرس جهت ثبت لاتری</h3>
+          <p>عکاسی دیجیتالی پارسا جاده قومندانی امنیه</p>
+          <p>روبروی لیسه جامی یا روبروی شعبه پاسپورت سابق</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
 
-    <script>
-        // تابع برای دریافت زمان باقیمانده از localStorage یا تنظیم مقدار اولیه
-        function getRemainingTime() {
-            const savedTime = localStorage.getItem('sharedLotteryCountdown');
-            
-            if (savedTime) {
-                const savedData = JSON.parse(savedTime);
-                const startTime = new Date(savedData.startTime);
-                const now = new Date();
-                const elapsed = Math.floor((now - startTime) / 1000); // ثانیه‌های گذشته
-                
-                // محاسبه زمان باقیمانده با کم کردن زمان گذشته
-                let remainingSeconds = savedData.initialTotalSeconds - elapsed;
-                
-                // اگر زمان تمام شده باشد
-                if (remainingSeconds <= 0) {
-                    return { 
-                        days: 0, 
-                        hours: 0, 
-                        minutes: 0, 
-                        seconds: 0, 
-                        totalSeconds: 0,
-                        startTime: savedData.startTime
-                    };
-                }
-                
-                const timeData = convertSecondsToTime(remainingSeconds);
-                timeData.startTime = savedData.startTime;
-                timeData.initialTotalSeconds = savedData.initialTotalSeconds;
-                return timeData;
-            } else {
-                // تنظیم مقدار اولیه: 17 روز، 18 ساعت، 34 دقیقه و 50 ثانیه
-                const initialTotalSeconds = (17 * 24 * 60 * 60) + (18 * 60 * 60) + (34 * 60) + 50;
-                const startTime = new Date();
-                const timeData = convertSecondsToTime(initialTotalSeconds);
-                timeData.startTime = startTime.toISOString();
-                timeData.initialTotalSeconds = initialTotalSeconds;
-                
-                // ذخیره در localStorage
-                localStorage.setItem('sharedLotteryCountdown', JSON.stringify({
-                    startTime: timeData.startTime,
-                    initialTotalSeconds: timeData.initialTotalSeconds
-                }));
-                
-                return timeData;
-            }
+  <div class="settings-toggle" id="settingsToggle">
+    <i class="fas fa-cog"></i>
+  </div>
+
+  <!-- Modal تنظیمات -->
+  <div class="modal" id="settingsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>تنظیمات سیستم</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      
+      <div class="settings-group">
+        <h3>انتخاب تم</h3>
+        <div class="theme-options">
+          <button class="theme-option active" data-theme="dark">تم تیره</button>
+          <button class="theme-option" data-theme="light">تم روشن</button>
+        </div>
+      </div>
+      
+      <div class="settings-group">
+        <h3>اندازه فونت</h3>
+        <div class="font-options">
+          <button class="font-option" data-font="small">کوچک</button>
+          <button class="font-option active" data-font="medium">متوسط</button>
+          <button class="font-option" data-font="large">بزرگ</button>
+        </div>
+      </div>
+      
+      <div class="settings-group">
+        <h3>ما را در شبکه های اجتماعی دنبال کنید</h3>
+        <div class="social-links">
+          <a href="https://t.me/Mohammadparsa001" class="social-link" target="_blank">
+            <i class="fab fa-telegram"></i>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=93791979726" class="social-link" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://instagram.com/haidari9165?igshid=YTQwZjQ0NmI0OA==" class="social-link" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@mohammad_parsa_001?_t=8ppKm2TEFJI&_r=1" class="social-link" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100041860717559" class="social-link" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="settings-group">
+        <h3>قوانین و ضوابط</h3>
+        <div class="terms">
+          <h4>شرایط استفاده از سیستم</h4>
+          <p>1. این سیستم فقط برای مشتریان عکاسی دیجیتالی پارسا طراحی شده است.</p>
+          <p>2. هرگونه استفاده غیرمجاز از این سیستم پیگرد قانونی دارد.</p>
+          <p>3. اطلاعات وارد شده در این سیستم محرمانه تلقی شده و نزد ما محفوظ خواهد ماند.</p>
+          <p>4. کاربر موظف است از اطلاعات خود محافظت کرده و آن را در اختیار دیگران قرار ندهد.</p>
+          <p>5. در صورت مشاهده هرگونه مشکل در سیستم، لطفاً با پشتیبانی تماس بگیرید.</p>
+        </div>
+      </div>
+      
+      <div class="version-info">
+        <p>ورژن سایت: 1.8.7.5</p>
+        <p>تهیه و ترتیب: محمد پارسا</p>
+        <p>موقعیت: هرات افغانستان</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // داده‌های نمونه با تمام اسامی
+    const peopleData = [
+      { name: "خلیل احمد محمدی", status: "individual" },
+      { name: "سهیلا عزیزی", status: "individual" },
+      { name: "محمد رفیع بهادری", status: "individual" },
+      { name: "سمیه رادمنش", status: "family" },
+      { name: "نازنین ایوبی", status: "individual" },
+      { name: "وزیر احمد اکبری", status: "family" },
+      { name: "سارا مهندس‌زاده", status: "family" },
+      { name: "وکیل احمد طاهری", status: "family" },
+      { name: "علی سینا وزیری", status: "family" },
+      { name: "جمعه گل حقدوست", status: "individual" },
+      { name: "مریم عزیزی", status: "individual" },
+      { name: "ع عبدالقدیر بهرامی", status: "individual" },
+      { name: "سدیس بارکزی", status: "individual" },
+      { name: "سعد الدین نوری", status: "individual" },
+      { name: "مهدی نصیری", status: "individual" },
+      { name: "محمد محمدی", status: "individual" },
+      { name: "عبدالرحیم ملکی", status: "individual" },
+      { name: "فردین جان غلامی", status: "individual" },
+      { name: "مسعود سلطانی", status: "individual" },
+      { name: "وزیر احمد کاکری", status: "individual" },
+      { name: "کریمه کرامت", status: "family" },
+      { name: "مسعود رستمی", status: "individual" },
+      { name: "علی رضا حقدوست", status: "individual" },
+      { name: "مجتبی رضایی", status: "individual" },
+      { name: "عبدالقدیر نورانی", status: "individual" },
+      { name: "ذکیه نامه طاهری", status: "individual" },
+      { name: "بی بی گل صادقی", status: "individual" },
+      { name: "زمری نورزائی", status: "family" },
+      { name: "اسماعیل احمدی", status: "individual" },
+      { name: "الیاس امانی", status: "individual" },
+      { name: "معراج بارکزی", status: "individual" },
+      { name: "وزیر احمد کاکری", status: "individual" },
+      { name: "نوید نورزی", status: "individual" },
+      { name: "محمد قاسمی", status: "individual" },
+      { name: "حفیظ الله طاهری", status: "individual" },
+      { name: "عبدالقدوس رسولی", status: "individual" },
+      { name: "عبدالحی محمدی", status: "individual" },
+      { name: "عبدالحق محمدی", status: "individual" },
+      { name: "شکیلا جامی", status: "individual" },
+      { name: "سید احمد قتالی نورزائی", status: "individual" },
+      { name: "زهرا علیزاده", status: "individual" },
+      { name: "کبرا کریمی", status: "individual" },
+      { name: "احسان الله زوری", status: "individual" },
+      { name: "رامین حبیبی", status: "individual" },
+      { name: "وزیر نظامی", status: "individual" },
+      { name: "جواد طاهری", status: "family" },
+      { name: "ستار نورزائی", status: "individual" },
+      { name: "نظر محمد علیزاده", status: "individual" },
+      { name: "عالم علیزاده", status: "individual" },
+      { name: "عبدالکریم عثمانی", status: "individual" },
+      { name: "غلام صدیق احمدی", status: "individual" },
+      { name: "نذیر سعیدی", status: "individual" },
+      { name: "عبدالشکور سعیدی", status: "individual" },
+      { name: "مریم رحیمی", status: "individual" },
+      { name: "سهیل مروی", status: "individual" },
+      { name: "وکیل احمد محمدی", status: "individual" },
+      { name: "محب الله عظیمی", status: "individual" },
+      { name: "عیدی محمد علیزاده", status: "individual" },
+      { name: "فرهاد کریمی", status: "individual" },
+      { name: "جواد محمدی", status: "individual" },
+      { name: "غلام سخی جیلانی", status: "individual" },
+      { name: "علی احمد محمدی", status: "individual" },
+      { name: "ع عبدالبصیر کریمی", status: "family" },
+      { name: "نصیر احمد جلیلی", status: "individual" },
+      { name: "مزمل حقدوست", status: "individual" },
+      { name: "سهیلا سلطانی", status: "individual" },
+      { name: "جلیل احمد کاکری", status: "individual" },
+      { name: "احمد علیزاده", status: "individual" },
+      { name: "شیر احمد جهانی", status: "individual" },
+      { name: "قائم حسینی", status: "individual" },
+      { name: "حسین سادات", status: "individual" },
+      { name: "غلام مودود عثمانی", status: "individual" },
+      { name: "یونس قادری", status: "individual" },
+      { name: "نیک بخت موسوی", status: "individual" },
+      { name: "قادر حیدری", status: "family" },
+      { name: "محمد رضا خاوری", status: "family" },
+      { name: "غلام حسن حسنی", status: "individual" },
+      { name: "حسیبا حیدری", status: "family" },
+      { name: "مصطفی حسنی", status: "family" },
+      { name: "محمد آصف صدیقی", status: "individual" },
+      { name: "اسماعیل نوری", status: "individual" },
+      { name: "مدینه محمدی", status: "individual" },
+      { name: "امید طاهری", status: "individual" },
+      { name: "عصمت الله حبیبی", status: "individual" },
+      { name: "صدیق الله برهانی", status: "individual" },
+      { name: "فرید حکیمی", status: "individual" },
+      { name: "ثریا احمدی", status: "individual" },
+      { name: "جمعه خان ابراهیمی", status: "individual" },
+      { name: "شیر آقا خاکسار", status: "individual" },
+      { name: "محمد حنیف محمودی", status: "individual" },
+      { name: "مسعود قربانی", status: "individual" },
+      { name: "قاسم رسولی", status: "individual" },
+      { name: "امید بهادری", status: "individual" },
+      { name: "صبغت الله عزیزی", status: "individual" },
+      { name: "نصیر رحمانی", status: "individual" },
+      { name: "فرزاد سروری", status: "individual" },
+      { name: "احمد شاه محمدی", status: "individual" },
+      { name: "بشیر احمد تیموری", status: "individual" }
+    ];
+
+    // متغیرهای حالت
+    let currentPage = 1;
+    const itemsPerPage = 10;
+    let filteredData = [...peopleData];
+    let currentFilter = 'all';
+
+    // عناصر DOM
+    const listContainer = document.getElementById('listContainer');
+    const paginationElement = document.getElementById('pagination');
+    const searchInput = document.getElementById('searchInput');
+    const themeToggle = document.getElementById('themeToggle');
+    const settingsToggle = document.getElementById('settingsToggle');
+    const settingsModal = document.getElementById('settingsModal');
+    const totalCountElement = document.getElementById('totalCount');
+    const individualCountElement = document.getElementById('individualCount');
+    const familyCountElement = document.getElementById('familyCount');
+    const loginForm = document.getElementById('loginForm');
+    const mainContent = document.getElementById('mainContent');
+    const statsSection = document.getElementById('statsSection');
+    const instructionsSection = document.getElementById('instructionsSection');
+    const footerSection = document.getElementById('footerSection');
+    const loginBtn = document.getElementById('loginBtn');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const closeModalButtons = document.querySelectorAll('.close-modal');
+    const themeOptions = document.querySelectorAll('.theme-option');
+    const fontOptions = document.querySelectorAll('.font-option');
+
+    // اطلاعات ورود
+    const correctUsername = "Mohammad Parsa";
+    const correctPassword = "parsa95"; // پسورد تصحیح شده
+
+    // اعتبارسنجی ورود
+    function validateLogin() {
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value.trim();
+      
+      if (username === correctUsername && password === correctPassword) {
+        return true;
+      }
+      
+      alert("نام کاربری یا پسورد اشتباه است. لطفاً دوباره تلاش کنید.");
+      return false;
+    }
+
+    // نمایش بخش اصلی پس از ورود موفق
+    function showMainContent() {
+      loginForm.style.display = 'none';
+      mainContent.style.display = 'flex';
+      statsSection.style.display = 'flex';
+      instructionsSection.style.display = 'block';
+      listContainer.style.display = 'grid';
+      paginationElement.style.display = 'flex';
+      footerSection.style.display = 'block';
+      
+      applyFilter('all');
+    }
+
+    // به روزرسانی آمار
+    function updateStats() {
+      totalCountElement.textContent = peopleData.length;
+      individualCountElement.textContent = peopleData.filter(person => person.status === 'individual').length;
+      familyCountElement.textContent = peopleData.filter(person => person.status === 'family').length;
+    }
+
+    // اعمال فیلتر
+    function applyFilter(filterType, searchTerm = '') {
+      currentFilter = filterType;
+      filteredData = peopleData.filter(person => {
+        const matchesFilter = filterType === 'all' || person.status === filterType;
+        const matchesSearch = person.name.includes(searchTerm);
+        return matchesFilter && matchesSearch;
+      });
+      
+      currentPage = 1;
+      renderList();
+      renderPagination();
+    }
+
+    // رندر لیست
+    function renderList() {
+      listContainer.innerHTML = '';
+      
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const paginatedData = filteredData.slice(startIndex, endIndex);
+      
+      if (paginatedData.length === 0) {
+        listContainer.innerHTML = '<div class="no-result">نتیجه‌ای یافت نشد</div>';
+        return;
+      }
+      
+      paginatedData.forEach(person => {
+        const personElement = document.createElement('div');
+        personElement.className = 'person';
+        personElement.innerHTML = `
+          <div class="name">${person.name}</div>
+          <div class="status">
+            <span>در لیست گرفته شد (${person.status === 'individual' ? 'انفرادی' : 'فامیلی'})</span>
+            <div class="tick">✅</div>
+          </div>
+        `;
+        listContainer.appendChild(personElement);
+      });
+    }
+
+    // رندر صفحه‌بندی
+    function renderPagination() {
+      paginationElement.innerHTML = '';
+      const pageCount = Math.ceil(filteredData.length / itemsPerPage);
+      
+      if (pageCount <= 1) return;
+      
+      // دکمه قبلی
+      if (currentPage > 1) {
+        const prevButton = document.createElement('button');
+        prevButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        prevButton.addEventListener('click', () => {
+          currentPage--;
+          renderList();
+          renderPagination();
+        });
+        paginationElement.appendChild(prevButton);
+      }
+      
+      // شماره صفحات
+      for (let i = 1; i <= pageCount; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.className = currentPage === i ? 'active' : '';
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          renderList();
+          renderPagination();
+        });
+        paginationElement.appendChild(pageButton);
+      }
+      
+      // دکمه بعدی
+      if (currentPage < pageCount) {
+        const nextButton = document.createElement('button');
+        nextButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        nextButton.addEventListener('click', () => {
+          currentPage++;
+          renderList();
+          renderPagination();
+        });
+        paginationElement.appendChild(nextButton);
+      }
+    }
+
+    // تغییر تم
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+      const icon = themeToggle.querySelector('i');
+      if (document.body.classList.contains('light-theme')) {
+        icon.className = 'fas fa-sun';
+        // ذخیره در localStorage
+        localStorage.setItem('theme', 'light');
+      } else {
+        icon.className = 'fas fa-moon';
+        // ذخیره در localStorage
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // تغییر اندازه فونت
+    function changeFontSize(size) {
+      // حذف کلاس‌های فعلی
+      document.body.classList.remove('font-small', 'font-medium', 'font-large');
+      
+      // اضافه کردن کلاس جدید
+      document.body.classList.add(`font-${size}`);
+      
+      // ذخیره در localStorage
+      localStorage.setItem('fontSize', size);
+    }
+
+    // باز کردن modal تنظیمات
+    function openSettings() {
+      settingsModal.style.display = 'flex';
+    }
+
+    // بستن modal تنظیمات
+    function closeSettings() {
+      settingsModal.style.display = 'none';
+    }
+
+    // بارگذاری تنظیمات از localStorage
+    function loadSettings() {
+      // بارگذاری تم
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeToggle.querySelector('i').className = 'fas fa-sun';
+      }
+      
+      // بارگذاری اندازه فونت
+      const savedFontSize = localStorage.getItem('fontSize') || 'medium';
+      changeFontSize(savedFontSize);
+      
+      // علامت گذاری گزینه‌های فعال
+      document.querySelectorAll('.theme-option, .font-option').forEach(option => {
+        option.classList.remove('active');
+      });
+      
+      document.querySelector(`.theme-option[data-theme="${savedTheme || 'dark'}"]`).classList.add('active');
+      document.querySelector(`.font-option[data-font="${savedFontSize}"]`).classList.add('active');
+    }
+
+    // مقداردهی اولیه
+    function init() {
+      updateStats();
+      loadSettings();
+      
+      // اضافه کردن event listeners
+      document.querySelectorAll('.filter-buttons button').forEach(button => {
+        button.addEventListener('click', () => {
+          applyFilter(button.dataset.filter, searchInput.value);
+        });
+      });
+      
+      searchInput.addEventListener('input', () => {
+        applyFilter(currentFilter, searchInput.value);
+      });
+      
+      themeToggle.addEventListener('click', toggleTheme);
+      settingsToggle.addEventListener('click', openSettings);
+      
+      loginBtn.addEventListener('click', () => {
+        if (validateLogin()) {
+          showMainContent();
         }
-        
-        // تبدیل ثانیه به روز، ساعت، دقیقه و ثانیه
-        function convertSecondsToTime(totalSeconds) {
-            const days = Math.floor(totalSeconds / (24 * 60 * 60));
-            const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
-            const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-            const seconds = Math.floor(totalSeconds % 60);
-            
-            return { days, hours, minutes, seconds, totalSeconds };
+      });
+      
+      // اجازه ورود با کلید Enter
+      passwordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          if (validateLogin()) {
+            showMainContent();
+          }
         }
-        
-        // به روز رسانی شمارش معکوس
-        function updateCountdown() {
-            const timeData = getRemainingTime();
-            
-            if (timeData.totalSeconds <= 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                return;
-            }
-            
-            // کاهش یک ثانیه (محاسبه مجدد بر اساس زمان شروع)
-            const now = new Date();
-            const startTime = new Date(timeData.startTime);
-            const elapsed = Math.floor((now - startTime) / 1000);
-            let remainingSeconds = timeData.initialTotalSeconds - elapsed;
-            
-            if (remainingSeconds < 0) {
-                remainingSeconds = 0;
-            }
-            
-            const { days, hours, minutes, seconds } = convertSecondsToTime(remainingSeconds);
-            
-            // دریافت المان‌ها
-            const daysElement = document.getElementById('days');
-            const hoursElement = document.getElementById('hours');
-            const minutesElement = document.getElementById('minutes');
-            const secondsElement = document.getElementById('seconds');
-            
-            // به روز رسانی با انیمیشن اگر مقدار تغییر کرده باشد
-            if (parseInt(daysElement.textContent) !== days) {
-                daysElement.textContent = days.toString().padStart(2, '0');
-                daysElement.classList.add('change');
-                setTimeout(() => daysElement.classList.remove('change'), 500);
-            }
-            
-            if (parseInt(hoursElement.textContent) !== hours) {
-                hoursElement.textContent = hours.toString().padStart(2, '0');
-                hoursElement.classList.add('change');
-                setTimeout(() => hoursElement.classList.remove('change'), 500);
-            }
-            
-            if (parseInt(minutesElement.textContent) !== minutes) {
-                minutesElement.textContent = minutes.toString().padStart(2, '0');
-                minutesElement.classList.add('change');
-                setTimeout(() => minutesElement.classList.remove('change'), 500);
-            }
-            
-            if (parseInt(secondsElement.textContent) !== seconds) {
-                secondsElement.textContent = seconds.toString().padStart(2, '0');
-                secondsElement.classList.add('change');
-                setTimeout(() => secondsElement.classList.remove('change'), 500);
-            }
+      });
+      
+      // بستن modal با کلیک روی دکمه بستن
+      closeModalButtons.forEach(button => {
+        button.addEventListener('click', closeSettings);
+      });
+      
+      // بستن modal با کلیک خارج از آن
+      settingsModal.addEventListener('click', (e) => {
+        if (e.target === settingsModal) {
+          closeSettings();
         }
-        
-        // بازنشانی زمان به 17 روز، 18 ساعت، 34 دقیقه و 50 ثانیه (برای همه کاربران)
-        function resetTimer() {
-            if (confirm("آیا مطمئن هستید که می‌خواهید زمان را برای همه کاربران بازنشانی کنید؟ این عمل برگشت‌ناپذیر است!")) {
-                // مقدار جدید: 17 روز، 18 ساعت، 34 دقیقه و 50 ثانیه
-                const initialTotalSeconds = (17 * 24 * 60 * 60) + (18 * 60 * 60) + (34 * 60) + 50;
-                const startTime = new Date();
-                
-                const timeData = {
-                    startTime: startTime.toISOString(),
-                    initialTotalSeconds: initialTotalSeconds
-                };
-                
-                localStorage.setItem('sharedLotteryCountdown', JSON.stringify(timeData));
-                
-                // به روز رسانی نمایش
-                const { days, hours, minutes, seconds } = convertSecondsToTime(initialTotalSeconds);
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-                
-                alert("زمان با موفقیت برای همه کاربران به 17 روز، 18 ساعت، 34 دقیقه و 50 ثانیه بازنشانی شد!");
-            }
-        }
-        
-        // کپی کردن کد تخفیف
-        function copyDiscountCode() {
-            const code = document.getElementById('discountCode').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const message = document.getElementById('copiedMessage');
-                message.classList.add('show');
-                setTimeout(() => {
-                    message.classList.remove('show');
-                }, 3000);
-            }).catch(err => {
-                console.error('خطا در کپی کردن کد: ', err);
-            });
-        }
-        
-        // Settings functionality
-        const settingsButton = document.getElementById('settingsButton');
-        const settingsModal = document.getElementById('settingsModal');
-        const closeSettings = document.getElementById('closeSettings');
-        
-        settingsButton.addEventListener('click', () => {
-            settingsModal.style.display = 'flex';
+      });
+      
+      // تغییر تم از طریق modal
+      themeOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const theme = option.dataset.theme;
+          
+          // حذف کلاس‌های فعال
+          themeOptions.forEach(opt => opt.classList.remove('active'));
+          // علامت گذاری گزینه انتخاب شده
+          option.classList.add('active');
+          
+          if (theme === 'light') {
+            document.body.classList.add('light-theme');
+            themeToggle.querySelector('i').className = 'fas fa-sun';
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.body.classList.remove('light-theme');
+            themeToggle.querySelector('i').className = 'fas fa-moon';
+            localStorage.setItem('theme', 'dark');
+          }
         });
-        
-        closeSettings.addEventListener('click', () => {
-            settingsModal.style.display = 'none';
+      });
+      
+      // تغییر اندازه فونت از طریق modal
+      fontOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const fontSize = option.dataset.font;
+          
+          // حذف کلاس‌های فعال
+          fontOptions.forEach(opt => opt.classList.remove('active'));
+          // علامت گذاری گزینه انتخاب شده
+          option.classList.add('active');
+          
+          changeFontSize(fontSize);
         });
-        
-        // Close modal when clicking outside
-        settingsModal.addEventListener('click', (e) => {
-            if (e.target === settingsModal) {
-                settingsModal.style.display = 'none';
-            }
-        });
-        
-        // Theme options
-        const themeOptions = document.querySelectorAll('.theme-option');
-        themeOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                themeOptions.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                
-                const theme = option.getAttribute('data-theme');
-                if (theme === 'dark') {
-                    document.body.classList.add('dark-theme');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.body.classList.remove('dark-theme');
-                    localStorage.setItem('theme', 'light');
-                }
-            });
-        });
-        
-        // Font options
-        const fontOptions = document.querySelectorAll('.font-option');
-        fontOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                fontOptions.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                
-                const font = option.getAttribute('data-font');
-                document.body.classList.remove('extra-large-font', 'thin-font');
-                
-                if (font === 'extra-large') {
-                    document.body.classList.add('extra-large-font');
-                    localStorage.setItem('font', 'extra-large');
-                } else if (font === 'thin') {
-                    document.body.classList.add('thin-font');
-                    localStorage.setItem('font', 'thin');
-                } else {
-                    localStorage.setItem('font', 'normal');
-                }
-            });
-        });
-        
-        // Wallpaper options
-        const wallpaperOptions = document.querySelectorAll('.wallpaper-option');
-        wallpaperOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                wallpaperOptions.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                
-                const wallpaper = option.getAttribute('data-wallpaper');
-                localStorage.setItem('wallpaper', wallpaper);
-                
-                // Apply wallpaper to body
-                if (wallpaper === 'usa-flag') {
-                    document.body.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png')";
-                    document.body.style.backgroundSize = "cover";
-                    document.body.style.backgroundAttachment = "fixed";
-                } else if (wallpaper === 'blue-gradient') {
-                    document.body.style.background = "linear-gradient(135deg, #3b82f6, #1d4ed8)";
-                    document.body.style.backgroundImage = "none";
-                } else if (wallpaper === 'purple-gradient') {
-                    document.body.style.background = "linear-gradient(135deg, #8b5cf6, #7c3aed)";
-                    document.body.style.backgroundImage = "none";
-                } else if (wallpaper === 'green-gradient') {
-                    document.body.style.background = "linear-gradient(135deg, #10b981, #059669)";
-                    document.body.style.backgroundImage = "none";
-                } else if (wallpaper === 'red-gradient') {
-                    document.body.style.background = "linear-gradient(135deg, #ef4444, #dc2626)";
-                    document.body.style.backgroundImage = "none";
-                } else {
-                    document.body.style.background = "linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%)";
-                    document.body.style.backgroundImage = "none";
-                }
-            });
-        });
-        
-        // Load saved settings
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load theme
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-theme');
-                document.querySelector('.theme-option[data-theme="dark"]').classList.add('selected');
-                document.querySelector('.theme-option[data-theme="light"]').classList.remove('selected');
-            }
-            
-            // Load font
-            const savedFont = localStorage.getItem('font');
-            if (savedFont) {
-                document.body.classList.remove('extra-large-font', 'thin-font');
-                if (savedFont === 'extra-large') {
-                    document.body.classList.add('extra-large-font');
-                    document.querySelector('.font-option[data-font="extra-large"]').classList.add('selected');
-                } else if (savedFont === 'thin') {
-                    document.body.classList.add('thin-font');
-                    document.querySelector('.font-option[data-font="thin"]').classList.add('selected');
-                } else {
-                    document.querySelector('.font-option[data-font="normal"]').classList.add('selected');
-                }
-            } else {
-                document.querySelector('.font-option[data-font="normal"]').classList.add('selected');
-            }
-            
-            // Load wallpaper
-            const savedWallpaper = localStorage.getItem('wallpaper');
-            if (savedWallpaper && savedWallpaper !== 'default') {
-                const wallpaperOption = document.querySelector(`.wallpaper-option[data-wallpaper="${savedWallpaper}"]`);
-                if (wallpaperOption) {
-                    wallpaperOption.classList.add('selected');
-                    document.querySelector('.wallpaper-option[data-wallpaper="default"]').classList.remove('selected');
-                    
-                    if (savedWallpaper === 'usa-flag') {
-                        document.body.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png')";
-                        document.body.style.backgroundSize = "cover";
-                        document.body.style.backgroundAttachment = "fixed";
-                    } else if (savedWallpaper === 'blue-gradient') {
-                        document.body.style.background = "linear-gradient(135deg, #3b82f6, #1d4ed8)";
-                    } else if (savedWallpaper === 'purple-gradient') {
-                        document.body.style.background = "linear-gradient(135deg, #8b5cf6, #7c3aed)";
-                    } else if (savedWallpaper === 'green-gradient') {
-                        document.body.style.background = "linear-gradient(135deg, #10b981, #059669)";
-                    } else if (savedWallpaper === 'red-gradient') {
-                        document.body.style.background = "linear-gradient(135deg, #ef4444, #dc2626)";
-                    }
-                }
-            }
-            
-            // نمایش زمان فعلی
-            const timeData = getRemainingTime();
-            document.getElementById('days').textContent = timeData.days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = timeData.hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = timeData.minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = timeData.seconds.toString().padStart(2, '0');
-            
-            // به روز رسانی شمارش معکوس هر ثانیه
-            setInterval(updateCountdown, 1000);
-        });
-    </script>
+      });
+    }
+
+    // راه‌اندازی برنامه
+    init();
+  </script>
 </body>
 </html>
